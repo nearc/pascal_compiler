@@ -71,10 +71,17 @@ typedef enum {
 	RepeatK,WhileK,
 	ForK, CaseK, GotoK
 } StmtKind;
-typedef enum {OpK,ConstK,IdK} ExpKind;
+typedef enum {
+	OpK, /*Operator Node   op
+	     *                /  \
+		 *              exp  exp   
+		 */
+	ConstK, /*Const Value Node*/
+	IdK /*Identifier Node*/
+} ExpKind;
 
 /* ExpType is used for type checking */
-typedef enum {Void,Integer,Boolean} ExpType;
+typedef enum {Void,Integer,Boolean,Character} ExpType;
 
 #define MAXCHILDREN 3
 
