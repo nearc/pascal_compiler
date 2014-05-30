@@ -1,10 +1,10 @@
 /****************************************************/
 /* File: globals.h                                  */
 /* Yacc/Bison Version                               */
-/* Global types and vars for TINY compiler          */
+/* Global types and vars for PASCAL compiler        */
 /* must come before other include files             */
-/* Compiler Construction: Principles and Practice   */
-/* Kenneth C. Louden                                */
+/* modified globls.h from textbooks					*/
+/* Nicole CHEN										*/
 /****************************************************/
 
 #ifndef _GLOBALS_H_
