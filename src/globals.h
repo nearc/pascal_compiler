@@ -62,8 +62,23 @@ extern int lineno; /* source line number for listing */
 /***********   Syntax tree for parsing ************/
 /**************************************************/
 
-typedef enum {StmtK,ExpK} NodeKind;
+typedef enum {ModuleK,DeclK,StmtK,ExpK} NodeKind;
 typedef enum {
+    ProgramK, 
+    RoutineK,
+    Routine_headK,
+    ProcdureK, 
+    FunctionK, 
+} ModuleKind;
+typedef enum {
+    ArrayK, 
+    FieldK,
+    SimpleK,
+    VarK;
+    ParaK;
+} DeclKind;
+typedef enum {
+    EqualK,
 	AssignK, 
 	ProcK, 
 	CompK, 
@@ -77,22 +92,28 @@ typedef enum {
 		 *              exp  exp   
 		 */
 	ConstK, /*Const Value Node*/
-	IdK /*Identifier Node*/
+	IdK ,/*Identifier Node*/
+    CaseK,
 } ExpKind;
 
 /* ExpType is used for type checking */
 typedef enum {Void,Integer,Boolean,Character} ExpType;
 
-#define MAXCHILDREN 3
+#define MAXCHILDREN 5
 
 typedef struct treeNode
    { struct treeNode * child[MAXCHILDREN];
      struct treeNode * sibling;
      int lineno;
      NodeKind nodekind;
-     union { StmtKind stmt; ExpKind exp;} kind;
+     union {ModuleKind module; StmtKind stmt; ExpKind exp;} kind;
      union { TokenType op;
-             int val;
+             int goto_label;
+             int direction;//1-to,0-downto
+             int int_val;
+             char char_val;
+             char * string_val;
+             double double_val;
              char * name; } attr;
      ExpType type; /* for type checking of exps */
    } TreeNode;
