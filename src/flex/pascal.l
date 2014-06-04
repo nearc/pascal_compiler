@@ -2,7 +2,7 @@
 	#include "y.tab.h"
 	#include "util.h"
 	#include "scan.h"
-	#include "gloables.h"
+	#include "globals.h"
 	#include <string.h>
 	#include <stdarg.h>
 	#include <stdio.h>
