@@ -1,10 +1,10 @@
 /****************************************************/
 /* File: globals.h                                  */
 /* Yacc/Bison Version                               */
-/* Global types and vars for PASCAL compiler        */
+/* Global types and vars for TINY compiler          */
 /* must come before other include files             */
-/* modified globls.h from textbooks					*/
-/* Nicole CHEN										*/
+/* Compiler Construction: Principles and Practice   */
+/* Kenneth C. Louden                                */
 /****************************************************/
 
 #ifndef _GLOBALS_H_
@@ -94,10 +94,11 @@ typedef enum {
 	ConstK, /*Const Value Node*/
 	IdK ,/*Identifier Node*/
     CaseK,
+    factorK,
 } ExpKind;
 
 /* ExpType is used for type checking */
-typedef enum {Void,Integer,Boolean,Character} ExpType;
+typedef enum {Void,Int,Bool,Char,Double,String} ExpType;
 
 #define MAXCHILDREN 5
 

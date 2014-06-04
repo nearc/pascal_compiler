@@ -10,6 +10,7 @@
 	/* lexeme of identifier or reserved word */
 	char tokenString[MAXTOKENLEN+1];
 %}
+
 letter 		[a-zA-Z]
 digit  		[0-9]
 hexdigit	[0-9a-fA-F]
@@ -17,10 +18,10 @@ underline	_
 newline		\n
 whitespace	[ ]
 char        [^\n\t \r]
-
 %%
 {newline}	{lineno++;}
 "program"	{return PROGRAM;}
+"procedure"     {return PROCEDURE;}
 "."			{return DOT;}
 ";"			{return SEMI;}
 ","			{return COMMA;}
@@ -85,19 +86,19 @@ char        [^\n\t \r]
 
 TokenType getToken(void)
 { static int firstTime = TRUE;
-	TokenType currentToken;
-	if (firstTime)
-	{ firstTime = FALSE;
-		lineno++;
-		yyin = source;
-		yyout = listing;
-	}
-	currentToken = yylex();
-	strncpy(tokenString,yytext,MAXTOKENLEN);
-	if (TraceScan) {
-		fprintf(listing,"\t%d: ",lineno);
-		printToken(currentToken,tokenString);
-	}
-	return currentToken;
+  TokenType currentToken;
+  if (firstTime)
+  { firstTime = FALSE;
+    lineno++;
+    yyin = source;
+    yyout = listing;
+  }
+  currentToken = yylex();
+  strncpy(tokenString,yytext,MAXTOKENLEN);
+  if (TraceScan) {
+    fprintf(listing,"\t%d: ",lineno);
+    printToken(currentToken,tokenString);
+  }
+  return currentToken;
 }
 

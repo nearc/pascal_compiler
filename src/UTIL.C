@@ -101,7 +101,6 @@ TreeNode * newModuleNode(ModuleKind kind)
     t->nodekind = ModuleK;
     t->kind.module = kind;
     t->lineno = lineno;
-    t->type = Void;
   }
   return t;
 }
