@@ -21,6 +21,7 @@ char        [^\n\t \r]
 %%
 {newline}	{lineno++;}
 "program"	{return PROGRAM;}
+"procedure"     {return PROCEDURE;}
 "."			{return DOT;}
 ";"			{return SEMI;}
 ","			{return COMMA;}

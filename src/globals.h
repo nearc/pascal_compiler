@@ -94,10 +94,11 @@ typedef enum {
 	ConstK, /*Const Value Node*/
 	IdK ,/*Identifier Node*/
     CaseK,
+    factorK,
 } ExpKind;
 
 /* ExpType is used for type checking */
-typedef enum {Void,Integer,Boolean,Character} ExpType;
+typedef enum {Void,Int,Bool,Char,Double,String} ExpType;
 
 #define MAXCHILDREN 5
 
