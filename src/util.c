@@ -1,9 +1,9 @@
 /****************************************************/
 /* File: util.c                                     */
 /* Utility function implementation                  */
-/* for the PASCAL compiler                            */
+/* for the TINY compiler                            */
 /* Compiler Construction: Principles and Practice   */
-/* Nicole CHEN                                */
+/* Kenneth C. Louden                                */
 /****************************************************/
 
 #include "globals.h"
@@ -84,6 +84,22 @@ TreeNode * newExpNode(ExpKind kind)
     t->sibling = NULL;
     t->nodekind = ExpK;
     t->kind.exp = kind;
+    t->lineno = lineno;
+    t->type = Void;
+  }
+  return t;
+}
+
+TreeNode * newModuleNode(ModuleKind kind)
+{ TreeNode * t = (TreeNode *) malloc(sizeof(TreeNode));
+  int i;
+  if (t==NULL)
+    fprintf(listing,"Out of memory error at line %d\n",lineno);
+  else {
+    for (i=0;i<MAXCHILDREN;i++) t->child[i] = NULL;
+    t->sibling = NULL;
+    t->nodekind = ModuleK;
+    t->kind.module = kind;
     t->lineno = lineno;
     t->type = Void;
   }
