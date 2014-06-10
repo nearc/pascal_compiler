@@ -1,8 +1,8 @@
 %{
-	#include "y.tab.h"
+	#include "globals.h"
+  #include "pascal.tab.h"
 	#include "util.h"
 	#include "scan.h"
-	#include "globals.h"
 	#include <string.h>
 	#include <stdarg.h>
 	#include <stdio.h>
@@ -10,6 +10,7 @@
 	/* lexeme of identifier or reserved word */
 	char tokenString[MAXTOKENLEN+1];
 %}
+%option noyywrap
 
 letter 		[a-zA-Z]
 digit  		[0-9]
@@ -54,7 +55,7 @@ char        [^\n\t \r]
 "<>"		{return UNEQUAL;}
 "or"		{return OR;}
 ":="		{return ASSIGN;}
-"begin"		{return BEGIN;}
+"begin"		{return P_BEGIN;}
 "if"		{return IF;}
 "else"		{return ELSE;}
 "then"		{return THEN;}
@@ -76,14 +77,12 @@ char        [^\n\t \r]
 "false"		{return FALSE;}
 "true"		{return TRUE;}
 
-
 '{char}'					{return CHAR;}
 '({char})({char})+'			{return STRING;}
-({digit})+					{return INTEGER;}
-({digit})+[.]({digit})+		{return REAL;}
-({letter}|{underline})({letter}|{digit}|{underline})*	{return ID;}
+'({digit})+'					{return INTEGER;}
+'({digit})+[.]({digit})+'		{return REAL;}
+'({letter}|{underline})({letter}|{digit}|{underline})*'	{return ID;}
 %%
-
 TokenType getToken(void)
 { static int firstTime = TRUE;
   TokenType currentToken;

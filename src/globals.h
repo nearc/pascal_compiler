@@ -1,4 +1,4 @@
-/****************************************************/
+  /****************************************************/
 /* File: globals.h                                  */
 /* Yacc/Bison Version                               */
 /* Global types and vars for TINY compiler          */
@@ -27,7 +27,7 @@
 #ifndef YYPARSER
 
 /* the name of the following file may change */
-#include "y.tab.h"
+#include "pascal.tab.h"
 
 /* ENDFILE is implicitly defined by Yacc/Bison,
  * and not included in the tab.h file
@@ -53,7 +53,8 @@
 typedef int TokenType; 
 
 extern FILE* source; /* source code text file */
-extern FILE* listing; /* listing output text file */
+extern const FILE* listing;
+// extern FILE* listing; /* listing output text file */
 extern FILE* code; /* code text file for TM simulator */
 
 extern int lineno; /* source line number for listing */
@@ -67,15 +68,15 @@ typedef enum {
     ProgramK, 
     RoutineK,
     Routine_headK,
-    ProcdureK, 
-    FunctionK, 
+    ProcedureK, 
+    FunctionK
 } ModuleKind;
 typedef enum {
     ArrayK, 
     FieldK,
     SimpleK,
-    VarK;
-    ParaK;
+    VarK,
+    ParaK
 } DeclKind;
 typedef enum {
     EqualK,
@@ -83,7 +84,8 @@ typedef enum {
 	ProcK, 
 	CompK, 
 	IfK,
-	RepeatK,WhileK,
+	RepeatK, WhileK,
+    LabelK,
 	ForK, CaseK, GotoK
 } StmtKind;
 typedef enum {
@@ -91,10 +93,14 @@ typedef enum {
 	     *                /  \
 		 *              exp  exp   
 		 */
-	ConstK, /*Const Value Node*/
+	ConstIntK, /*Const Value Node*/
+    ConstDoubleK,
+    ConstCharK,
+    ConstStrK,
+
 	IdK ,/*Identifier Node*/
-    CaseK,
-    factorK,
+    Case_expK,
+    FactorK
 } ExpKind;
 
 /* ExpType is used for type checking */
@@ -107,7 +113,12 @@ typedef struct treeNode
      struct treeNode * sibling;
      int lineno;
      NodeKind nodekind;
-     union {ModuleKind module; StmtKind stmt; ExpKind exp;} kind;
+     union {
+        ModuleKind module; 
+        StmtKind stmt; 
+        ExpKind exp;
+        DeclKind decl;
+    } kind;
      union { TokenType op;
              int goto_label;
              int direction;//1-to,0-downto
