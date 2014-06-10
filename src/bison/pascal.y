@@ -202,7 +202,7 @@ name_list : name_list  COMMA  ID
                    if (t != NULL)
                    { while (t->sibling != NULL)
                         t = t->sibling;
-                     t->sibling=newExpNode(Idk);
+                     t->sibling=newExpNode(IdK);
                      t->sibling->attr.name=copyString(tokenString);
                      $$ = $1; 
                    }
