@@ -333,6 +333,9 @@ void yyfree (void *  );
 
 /* Begin user sect3 */
 
+#define yywrap(n) 1
+#define YY_SKIP_YYWRAP
+
 typedef unsigned char YY_CHAR;
 
 FILE *yyin = (FILE *) 0, *yyout = (FILE *) 0;
@@ -580,7 +583,9 @@ char *yytext;
 	char*	yytext0;
 	/* lexeme of identifier or reserved word */
 	char tokenString[MAXTOKENLEN+1];
-#line 584 "scan.c"
+
+
+#line 589 "scan.c"
 
 #define INITIAL 0
 
@@ -762,9 +767,9 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 21 "flex/pascal.l"
+#line 24 "flex/pascal.l"
 
-#line 768 "scan.c"
+#line 773 "scan.c"
 
 	if ( !(yy_init) )
 		{
@@ -850,315 +855,315 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 /* rule 1 can match eol */
 YY_RULE_SETUP
-#line 22 "flex/pascal.l"
+#line 25 "flex/pascal.l"
 {lineno++;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 23 "flex/pascal.l"
+#line 26 "flex/pascal.l"
 {return PROGRAM;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 24 "flex/pascal.l"
+#line 27 "flex/pascal.l"
 {return PROCEDURE;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 25 "flex/pascal.l"
+#line 28 "flex/pascal.l"
 {return DOT;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 26 "flex/pascal.l"
+#line 29 "flex/pascal.l"
 {return SEMI;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 27 "flex/pascal.l"
+#line 30 "flex/pascal.l"
 {return COMMA;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 28 "flex/pascal.l"
+#line 31 "flex/pascal.l"
 {return EQUAL;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 29 "flex/pascal.l"
+#line 32 "flex/pascal.l"
 {return CONST;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 30 "flex/pascal.l"
+#line 33 "flex/pascal.l"
 {return ARRAY;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 31 "flex/pascal.l"
+#line 34 "flex/pascal.l"
 {return TYPE;}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 32 "flex/pascal.l"
+#line 35 "flex/pascal.l"
 {return LB;}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 33 "flex/pascal.l"
+#line 36 "flex/pascal.l"
 {return RB;}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 34 "flex/pascal.l"
+#line 37 "flex/pascal.l"
 {return OF;}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 35 "flex/pascal.l"
+#line 38 "flex/pascal.l"
 {return RECORD;}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 36 "flex/pascal.l"
+#line 39 "flex/pascal.l"
 {return END;}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 37 "flex/pascal.l"
+#line 40 "flex/pascal.l"
 {return COLON;}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 38 "flex/pascal.l"
+#line 41 "flex/pascal.l"
 {return LP;}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 39 "flex/pascal.l"
+#line 42 "flex/pascal.l"
 {return RP;}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 40 "flex/pascal.l"
+#line 43 "flex/pascal.l"
 {return DOTDOT;}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 41 "flex/pascal.l"
+#line 44 "flex/pascal.l"
 {return MINUS;}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 42 "flex/pascal.l"
+#line 45 "flex/pascal.l"
 {return VAR;}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 43 "flex/pascal.l"
+#line 46 "flex/pascal.l"
 {return FUNCTION;}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 44 "flex/pascal.l"
+#line 47 "flex/pascal.l"
 {return NOT;}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 45 "flex/pascal.l"
+#line 48 "flex/pascal.l"
 {return GE;}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 46 "flex/pascal.l"
+#line 49 "flex/pascal.l"
 {return GT;}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 47 "flex/pascal.l"
+#line 50 "flex/pascal.l"
 {return LE;}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 48 "flex/pascal.l"
+#line 51 "flex/pascal.l"
 {return LT;}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 49 "flex/pascal.l"
+#line 52 "flex/pascal.l"
 {return PLUS;}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 50 "flex/pascal.l"
+#line 53 "flex/pascal.l"
 {return MUL;}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 51 "flex/pascal.l"
+#line 54 "flex/pascal.l"
 {return DIV;}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 52 "flex/pascal.l"
+#line 55 "flex/pascal.l"
 {return AND;}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 53 "flex/pascal.l"
+#line 56 "flex/pascal.l"
 {return MOD;}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 54 "flex/pascal.l"
+#line 57 "flex/pascal.l"
 {return UNEQUAL;}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 55 "flex/pascal.l"
+#line 58 "flex/pascal.l"
 {return OR;}
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 56 "flex/pascal.l"
+#line 59 "flex/pascal.l"
 {return ASSIGN;}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 57 "flex/pascal.l"
+#line 60 "flex/pascal.l"
 {return P_BEGIN;}
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 58 "flex/pascal.l"
+#line 61 "flex/pascal.l"
 {return IF;}
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 59 "flex/pascal.l"
+#line 62 "flex/pascal.l"
 {return ELSE;}
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 60 "flex/pascal.l"
+#line 63 "flex/pascal.l"
 {return THEN;}
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 61 "flex/pascal.l"
+#line 64 "flex/pascal.l"
 {return REPEAT;}
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 62 "flex/pascal.l"
+#line 65 "flex/pascal.l"
 {return UNTIL;}
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 63 "flex/pascal.l"
+#line 66 "flex/pascal.l"
 {return WHILE;}
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 64 "flex/pascal.l"
+#line 67 "flex/pascal.l"
 {return DO;}
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 65 "flex/pascal.l"
+#line 68 "flex/pascal.l"
 {return FOR;}
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 66 "flex/pascal.l"
+#line 69 "flex/pascal.l"
 {return GOTO;}
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 67 "flex/pascal.l"
+#line 70 "flex/pascal.l"
 {return CASE;}
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 68 "flex/pascal.l"
+#line 71 "flex/pascal.l"
 {return TO;}
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 69 "flex/pascal.l"
+#line 72 "flex/pascal.l"
 {return DOWNTO;}
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 70 "flex/pascal.l"
+#line 73 "flex/pascal.l"
 {return READ;}
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 71 "flex/pascal.l"
+#line 74 "flex/pascal.l"
 {return TYPEINTEGER;}
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 72 "flex/pascal.l"
+#line 75 "flex/pascal.l"
 {return TYPEREAL;}
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 73 "flex/pascal.l"
+#line 76 "flex/pascal.l"
 {return TYPECHAR;}
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 74 "flex/pascal.l"
+#line 77 "flex/pascal.l"
 {return TYPESTRING;}
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 75 "flex/pascal.l"
+#line 78 "flex/pascal.l"
 {return TYPEBOOL;}
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 76 "flex/pascal.l"
+#line 79 "flex/pascal.l"
 {return FALSE;}
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 77 "flex/pascal.l"
+#line 80 "flex/pascal.l"
 {return TRUE;}
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 80 "flex/pascal.l"
+#line 83 "flex/pascal.l"
 {return CHAR;}
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 81 "flex/pascal.l"
+#line 84 "flex/pascal.l"
 {return STRING;}
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 82 "flex/pascal.l"
+#line 85 "flex/pascal.l"
 {return INTEGER;}
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 83 "flex/pascal.l"
+#line 86 "flex/pascal.l"
 {return REAL;}
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 84 "flex/pascal.l"
+#line 87 "flex/pascal.l"
 {return ID;}
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 85 "flex/pascal.l"
+#line 88 "flex/pascal.l"
 ECHO;
 	YY_BREAK
-#line 1162 "scan.c"
+#line 1167 "scan.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2155,7 +2160,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 85 "flex/pascal.l"
+#line 88 "flex/pascal.l"
 
 
 

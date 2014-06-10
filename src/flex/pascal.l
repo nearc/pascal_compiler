@@ -9,7 +9,10 @@
 	char*	yytext0;
 	/* lexeme of identifier or reserved word */
 	char tokenString[MAXTOKENLEN+1];
+
+
 %}
+%option noyywrap
 
 letter 		[a-zA-Z]
 digit  		[0-9]

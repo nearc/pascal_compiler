@@ -105,6 +105,20 @@ TreeNode * newModuleNode(ModuleKind kind)
   return t;
 }
 
+TreeNode * newDeclNode(DeclKind kind){
+  TreeNode * t = (TreeNode *)malloc(sizeof(TreeNode));
+  int i;
+  if (t==NULL)
+    fprintf(listing,"Out of memory error at line %d\n",lineno);
+  else {
+    for (i=0;i<MAXCHILDREN;i++) t->child[i] = NULL;
+    t->sibling = NULL;
+    t->nodekind = ModuleK;
+    t->kind.decl = kind;
+    t->lineno = lineno;
+  }
+  return t; 
+}
 /* Function copyString allocates and makes a new
  * copy of an existing string
  */
@@ -155,12 +169,12 @@ void printTree( TreeNode * tree )
         case AssignK:
           fprintf(listing,"Assign to: %s\n",tree->attr.name);
           break;
-        case ReadK:
-          fprintf(listing,"Read: %s\n",tree->attr.name);
-          break;
-        case WriteK:
-          fprintf(listing,"Write\n");
-          break;
+        // case ReadK:
+        //   fprintf(listing,"Read: %s\n",tree->attr.name);
+        //   break;
+        // case WriteK:
+        //   fprintf(listing,"Write\n");
+        //   break;
         default:
           fprintf(listing,"Unknown ExpNode kind\n");
           break;
@@ -182,7 +196,7 @@ void printTree( TreeNode * tree )
           fprintf(listing, "Const: %c\n", tree->attr.char_val);
           break;
         case ConstStrK:
-          fprintf(listing, "Const:%s\n", tree->attr.str_val);
+          fprintf(listing, "Const:%s\n", tree->attr.string_val);
           break;
         case IdK:
           fprintf(listing,"Id: %s\n",tree->attr.name);
