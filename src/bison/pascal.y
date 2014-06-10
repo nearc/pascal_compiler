@@ -608,8 +608,8 @@ int yyerror(char * message)
   return 0;
 }
 
-static int yylex(void)
-{ return getToken(); }
+// static int yylex(void)
+// { return getToken(); }
 
 TreeNode * parse(void)
 { yyparse();
