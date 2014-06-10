@@ -20,7 +20,7 @@ static TreeNode * savedTree; /* stores syntax tree for later return */
 %token  CHAR
 %token  STRING
 %token PROGRAM DOT SEMI COMMA EQUAL CONST ARRAY TYPE LB RB OF RECORD END COLON LP RP DOTDOT MINUS VAR FUNCTION NOT GE GT LE LT
-%token PLUS MUL DIV AND MOD UNEQUAL OR ASSIGN P_BEGIN IF ELSE THEN REPEAT UNTIL WHILE DO FOR GOTO CASE TO DOWNTO READ
+%token PLUS MUL DIV AND MOD UNEQUAL OR ASSIGN BEGIN IF ELSE THEN REPEAT UNTIL WHILE DO FOR GOTO CASE TO DOWNTO READ
 %token TYPEINTEGER TYPEREAL TYPECHAR TYPESTRING TYPEBOOL FALSE TRUE PROCEDURE 
 
 
@@ -87,24 +87,24 @@ const_expr_list : const_expr_list  ID
                       }
                 ;
 const_value   :  INTEGER  
-                    { $$ =newExpNode(ConstIntK);
-                      $$->attr.int_val=atoi(tokenString);
+                    { $$ =newExpNode(ConstK);
+                      $$->int_val=atoi(tokenString);
                       $$->lineno =lineno;
                     }
               |  REAL
-                    { $$ =newExpNode(ConstDoubleK);
-                      $$->attr.double_val=atof(tokenString);
+                    { $$ =newExpNode(ConstK);
+                      $$->double_val=atof(tokenString);
                       $$->lineno =lineno;
                     } 
               |  CHAR  
-                    { $$ =newExpNode(ConstCharK);
-                      $$->attr.char_val=tokenString;
+                    { $$ =newExpNode(ConstK);
+                      $$->char_val=tokenString;
                       $$->lineno =lineno;
                     }
               |  STRING  
-                    { $$ =newExpNode(ConstStrK);
-                      $$->attr.string_val=malloc((strlen(tokenString)+1)*sizeof(char));
-                      strcpy($$->attr.string_val,tokenString);
+                    { $$ =newExpNode(ConstK);
+                      $$->string_val=malloc((strlen(tokenString)+1)*sizeof(char));
+                      strcpy($$->string_val,tokenString);
                       $$->lineno =lineno;
                     }
               ;
@@ -202,7 +202,7 @@ name_list : name_list  COMMA  ID
                    if (t != NULL)
                    { while (t->sibling != NULL)
                         t = t->sibling;
-                     t->sibling=newExpNode(IdK);
+                     t->sibling=newExpNode(Idk);
                      t->sibling->attr.name=copyString(tokenString);
                      $$ = $1; 
                    }
@@ -307,7 +307,7 @@ para_type_list : var_para_list COLON  simple_type_decl
 var_para_list : VAR  name_list {$$=$2;};
 val_para_list : name_list {$$=$1;};
 routine_body : compound_stmt {$$=$1;};
-compound_stmt : P_BEGIN  stmt_list  END {$$=$2;};
+compound_stmt : BEGIN  stmt_list  END {$$=$2;};
 stmt_list : stmt_list  stmt  SEMI 
               { TreeNode* t = $1;
                    if (t != NULL)
@@ -408,7 +408,7 @@ for_stmt : FOR  ID { savedName = copyString(tokenString);
                   $$->child[1] = $6;
                   $$->child[2] = $7;
                   $$->child[3] = $9; 
-                  $$->lineno=savedLineNo;
+                  $$->lineno=savedLineno;
                 }
             ;
 direction : TO {$$->attr.direction=1}
@@ -571,7 +571,7 @@ factor     : ID { $$ = newExpNode(IdK);
            |  ID  { savedName = copyString(tokenString);
                    savedLineNo = lineno;}
               LB  expression  RB
-                {$$= newExpNode(FactorK);
+                {$$= newExpNode(factorK);
                  $$->attr.name =savedName;
                  $$->child[0]=$4;
                  $$->lineno =savedLineNo;
@@ -579,9 +579,9 @@ factor     : ID { $$ = newExpNode(IdK);
            |  ID  { savedName = copyString(tokenString);
                    savedLineNo = lineno;}
               DOT  ID
-                {$$=newExpNode(FactorK);
+                {$$=newExpNode(factorK);
                  $$->attr.name =savedName;
-                 $$->child[1]=newExpNode(IdK);
+                 $$->child[1]=newExpNode(Idk);
                  $$->child[1]->attr.name=copyString(tokenString);
                  $$->lineno =savedLineNo;
                 }
@@ -608,9 +608,8 @@ int yyerror(char * message)
   return 0;
 }
 
-// // static int yylex(void)
-// int yylex(void)
-// { return getToken(); }
+static int yylex(void)
+{ return getToken(); }
 
 TreeNode * parse(void)
 { yyparse();

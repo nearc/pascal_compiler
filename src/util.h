@@ -23,6 +23,14 @@ TreeNode * newStmtNode(StmtKind);
  */
 TreeNode * newExpNode(ExpKind);
 
+<<<<<<< HEAD
+=======
+/* Function newModuleNode creates a new Module
+ * node for syntax tree construction
+ */
+TreeNode * newModuleNode(ModuleKind);
+
+>>>>>>> parent of 7800dc1... death loop
 /* Function copyString allocates and makes a new
  * copy of an existing string
  */
