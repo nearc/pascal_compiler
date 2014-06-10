@@ -104,7 +104,7 @@
      UNEQUAL = 293,
      OR = 294,
      ASSIGN = 295,
-     BEGIN = 296,
+     P_BEGIN = 296,
      IF = 297,
      ELSE = 298,
      THEN = 299,
@@ -167,7 +167,7 @@
 #define UNEQUAL 293
 #define OR 294
 #define ASSIGN 295
-#define BEGIN 296
+#define P_BEGIN 296
 #define IF 297
 #define ELSE 298
 #define THEN 299
@@ -605,7 +605,7 @@ static const char *const yytname[] =
   "STRING", "PROGRAM", "DOT", "SEMI", "COMMA", "EQUAL", "CONST", "ARRAY",
   "TYPE", "LB", "RB", "OF", "RECORD", "END", "COLON", "LP", "RP", "DOTDOT",
   "MINUS", "VAR", "FUNCTION", "NOT", "GE", "GT", "LE", "LT", "PLUS", "MUL",
-  "DIV", "AND", "MOD", "UNEQUAL", "OR", "ASSIGN", "BEGIN", "IF", "ELSE",
+  "DIV", "AND", "MOD", "UNEQUAL", "OR", "ASSIGN", "P_BEGIN", "IF", "ELSE",
   "THEN", "REPEAT", "UNTIL", "WHILE", "DO", "FOR", "GOTO", "CASE", "TO",
   "DOWNTO", "READ", "TYPEINTEGER", "TYPEREAL", "TYPECHAR", "TYPESTRING",
   "TYPEBOOL", "FALSE", "TRUE", "PROCEDURE", "$accept", "program",
@@ -1775,33 +1775,33 @@ yyreduce:
 
   case 14:
 #line 90 "bison/pascal.y"
-    { (yyval) =newExpNode(ConstK);
-                      (yyval)->int_val=atoi(tokenString);
+    { (yyval) =newExpNode(ConstIntK);
+                      (yyval)->attr.int_val=atoi(tokenString);
                       (yyval)->lineno =lineno;
                     ;}
     break;
 
   case 15:
 #line 95 "bison/pascal.y"
-    { (yyval) =newExpNode(ConstK);
-                      (yyval)->double_val=atof(tokenString);
+    { (yyval) =newExpNode(ConstDoubleK);
+                      (yyval)->attr.double_val=atof(tokenString);
                       (yyval)->lineno =lineno;
                     ;}
     break;
 
   case 16:
 #line 100 "bison/pascal.y"
-    { (yyval) =newExpNode(ConstK);
-                      (yyval)->char_val=tokenString;
+    { (yyval) =newExpNode(ConstCharK);
+                      (yyval)->attr.char_val=tokenString;
                       (yyval)->lineno =lineno;
                     ;}
     break;
 
   case 17:
 #line 105 "bison/pascal.y"
-    { (yyval) =newExpNode(ConstK);
-                      (yyval)->string_val=malloc((strlen(tokenString)+1)*sizeof(char));
-                      strcpy((yyval)->string_val,tokenString);
+    { (yyval) =newExpNode(ConstStrK);
+                      (yyval)->attr.string_val=malloc((strlen(tokenString)+1)*sizeof(char));
+                      strcpy((yyval)->attr.string_val,tokenString);
                       (yyval)->lineno =lineno;
                     ;}
     break;

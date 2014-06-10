@@ -1,6 +1,5 @@
-#line 2 "scan.c"
 
-#line 4 "scan.c"
+#line 3 "lex.yy.c"
 
 #define  YY_INT_ALIGNED short int
 
@@ -570,17 +569,17 @@ int yy_flex_debug = 0;
 char *yytext;
 #line 1 "flex/pascal.l"
 #line 2 "flex/pascal.l"
-  #include "globals.h"
 	#include "pascal.tab.h"
 	#include "util.h"
 	#include "scan.h"
+	#include "globals.h"
 	#include <string.h>
 	#include <stdarg.h>
 	#include <stdio.h>
 	char*	yytext0;
 	/* lexeme of identifier or reserved word */
 	char tokenString[MAXTOKENLEN+1];
-#line 584 "scan.c"
+#line 583 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -764,7 +763,7 @@ YY_DECL
     
 #line 21 "flex/pascal.l"
 
-#line 768 "scan.c"
+#line 767 "lex.yy.c"
 
 	if ( !(yy_init) )
 		{
@@ -1158,7 +1157,7 @@ YY_RULE_SETUP
 #line 85 "flex/pascal.l"
 ECHO;
 	YY_BREAK
-#line 1162 "scan.c"
+#line 1161 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 

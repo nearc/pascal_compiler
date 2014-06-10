@@ -1,8 +1,8 @@
 %{
+  #include "globals.h"
 	#include "pascal.tab.h"
 	#include "util.h"
 	#include "scan.h"
-	#include "globals.h"
 	#include <string.h>
 	#include <stdarg.h>
 	#include <stdio.h>

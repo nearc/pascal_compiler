@@ -11,7 +11,7 @@
 /* Procedure printToken prints a token 
  * and its lexeme to the listing file
  */
-void printToken( TokenType, const char* );
+void printToken( TokenType token, const char* );
 
 /* Function newStmtNode creates a new statement
  * node for syntax tree construction

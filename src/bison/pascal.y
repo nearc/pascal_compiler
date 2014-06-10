@@ -87,24 +87,24 @@ const_expr_list : const_expr_list  ID
                       }
                 ;
 const_value   :  INTEGER  
-                    { $$ =newExpNode(ConstK);
-                      $$->int_val=atoi(tokenString);
+                    { $$ =newExpNode(ConstIntK);
+                      $$->attr.int_val=atoi(tokenString);
                       $$->lineno =lineno;
                     }
               |  REAL
-                    { $$ =newExpNode(ConstK);
-                      $$->double_val=atof(tokenString);
+                    { $$ =newExpNode(ConstDoubleK);
+                      $$->attr.double_val=atof(tokenString);
                       $$->lineno =lineno;
                     } 
               |  CHAR  
-                    { $$ =newExpNode(ConstK);
-                      $$->char_val=tokenString;
+                    { $$ =newExpNode(ConstCharK);
+                      $$->attr.char_val=tokenString;
                       $$->lineno =lineno;
                     }
               |  STRING  
-                    { $$ =newExpNode(ConstK);
-                      $$->string_val=malloc((strlen(tokenString)+1)*sizeof(char));
-                      strcpy($$->string_val,tokenString);
+                    { $$ =newExpNode(ConstStrK);
+                      $$->attr.string_val=malloc((strlen(tokenString)+1)*sizeof(char));
+                      strcpy($$->attr.string_val,tokenString);
                       $$->lineno =lineno;
                     }
               ;

@@ -77,7 +77,7 @@
      UNEQUAL = 293,
      OR = 294,
      ASSIGN = 295,
-     BEGIN = 296,
+     P_BEGIN = 296,
      IF = 297,
      ELSE = 298,
      THEN = 299,
@@ -140,7 +140,7 @@
 #define UNEQUAL 293
 #define OR 294
 #define ASSIGN 295
-#define BEGIN 296
+#define P_BEGIN 296
 #define IF 297
 #define ELSE 298
 #define THEN 299
