@@ -1994,7 +1994,7 @@ yyreduce:
                    if (t != NULL)
                    { while (t->sibling != NULL)
                         t = t->sibling;
-                     t->sibling=newExpNode(Idk);
+                     t->sibling=newExpNode(IdK);
                      t->sibling->attr.name=copyString(tokenString);
                      (yyval) = (yyvsp[(1) - (3)]); 
                    }
@@ -2334,7 +2334,7 @@ yyreduce:
                   (yyval)->child[1] = (yyvsp[(6) - (9)]);
                   (yyval)->child[2] = (yyvsp[(7) - (9)]);
                   (yyval)->child[3] = (yyvsp[(9) - (9)]); 
-                  (yyval)->lineno=savedLineno;
+                  (yyval)->lineno=savedLineNo;
                 ;}
     break;
 
@@ -2587,7 +2587,7 @@ yyreduce:
 
   case 124:
 #line 574 "bison/pascal.y"
-    {(yyval)= newExpNode(factorK);
+    {(yyval)= newExpNode(FactorK);
                  (yyval)->attr.name =savedName;
                  (yyval)->child[0]=(yyvsp[(4) - (5)]);
                  (yyval)->lineno =savedLineNo;
@@ -2602,9 +2602,9 @@ yyreduce:
 
   case 126:
 #line 582 "bison/pascal.y"
-    {(yyval)=newExpNode(factorK);
+    {(yyval)=newExpNode(FactorK);
                  (yyval)->attr.name =savedName;
-                 (yyval)->child[1]=newExpNode(Idk);
+                 (yyval)->child[1]=newExpNode(IdK);
                  (yyval)->child[1]->attr.name=copyString(tokenString);
                  (yyval)->lineno =savedLineNo;
                 ;}

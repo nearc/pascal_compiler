@@ -408,7 +408,7 @@ for_stmt : FOR  ID { savedName = copyString(tokenString);
                   $$->child[1] = $6;
                   $$->child[2] = $7;
                   $$->child[3] = $9; 
-                  $$->lineno=savedLineno;
+                  $$->lineno=savedLineNo;
                 }
             ;
 direction : TO {$$->attr.direction=1}
@@ -571,7 +571,7 @@ factor     : ID { $$ = newExpNode(IdK);
            |  ID  { savedName = copyString(tokenString);
                    savedLineNo = lineno;}
               LB  expression  RB
-                {$$= newExpNode(factorK);
+                {$$= newExpNode(FactorK);
                  $$->attr.name =savedName;
                  $$->child[0]=$4;
                  $$->lineno =savedLineNo;
@@ -579,9 +579,9 @@ factor     : ID { $$ = newExpNode(IdK);
            |  ID  { savedName = copyString(tokenString);
                    savedLineNo = lineno;}
               DOT  ID
-                {$$=newExpNode(factorK);
+                {$$=newExpNode(FactorK);
                  $$->attr.name =savedName;
-                 $$->child[1]=newExpNode(Idk);
+                 $$->child[1]=newExpNode(IdK);
                  $$->child[1]->attr.name=copyString(tokenString);
                  $$->lineno =savedLineNo;
                 }
