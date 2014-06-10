@@ -20,7 +20,7 @@ static TreeNode * savedTree; /* stores syntax tree for later return */
 %token  CHAR
 %token  STRING
 %token PROGRAM DOT SEMI COMMA EQUAL CONST ARRAY TYPE LB RB OF RECORD END COLON LP RP DOTDOT MINUS VAR FUNCTION NOT GE GT LE LT
-%token PLUS MUL DIV AND MOD UNEQUAL OR ASSIGN BEGIN IF ELSE THEN REPEAT UNTIL WHILE DO FOR GOTO CASE TO DOWNTO READ
+%token PLUS MUL DIV AND MOD UNEQUAL OR ASSIGN P_BEGIN IF ELSE THEN REPEAT UNTIL WHILE DO FOR GOTO CASE TO DOWNTO READ
 %token TYPEINTEGER TYPEREAL TYPECHAR TYPESTRING TYPEBOOL FALSE TRUE PROCEDURE 
 
 
@@ -307,7 +307,7 @@ para_type_list : var_para_list COLON  simple_type_decl
 var_para_list : VAR  name_list {$$=$2;};
 val_para_list : name_list {$$=$1;};
 routine_body : compound_stmt {$$=$1;};
-compound_stmt : BEGIN  stmt_list  END {$$=$2;};
+compound_stmt : P_BEGIN  stmt_list  END {$$=$2;};
 stmt_list : stmt_list  stmt  SEMI 
               { TreeNode* t = $1;
                    if (t != NULL)

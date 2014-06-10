@@ -1,5 +1,5 @@
 %{
-	#include "y.tab.h"
+	#include "pascal.tab.h"
 	#include "util.h"
 	#include "scan.h"
 	#include "globals.h"
@@ -54,7 +54,7 @@ char        [^\n\t \r]
 "<>"		{return UNEQUAL;}
 "or"		{return OR;}
 ":="		{return ASSIGN;}
-"begin"		{return BEGIN;}
+"begin"		{return P_BEGIN;}
 "if"		{return IF;}
 "else"		{return ELSE;}
 "then"		{return THEN;}
@@ -79,9 +79,9 @@ char        [^\n\t \r]
 
 '{char}'					{return CHAR;}
 '({char})({char})+'			{return STRING;}
-({digit})+					{return INTEGER;}
-({digit})+[.]({digit})+		{return REAL;}
-({letter}|{underline})({letter}|{digit}|{underline})*	{return ID;}
+'({digit})+'					{return INTEGER;}
+'({digit})+[.]({digit})+'	{return REAL;}
+'({letter}|{underline})({letter}|{digit}|{underline})*'	{return ID;}
 %%
 
 TokenType getToken(void)
